@@ -43,8 +43,8 @@ Once resources are created, you can configure your terraform files to use the S3
 terraform {
   backend "s3" {
     bucket         = "THE_NAME_OF_THE_STATE_BUCKET"
-    key            = "some_environment/terraform.tfstate"
-    region         = "us-east-1"
+    key            = "THE_CONFIG_PATH/terraform.tfstate"
+    region         = "REGION_OF_THE_STATE_BUCKET"
     encrypt        = true
     kms_key_id     = "THE_ID_OF_THE_KMS_KEY"
     dynamodb_table = "THE_ID_OF_THE_DYNAMODB_TABLE"
@@ -52,7 +52,7 @@ terraform {
 }
 ```
 
-`THE_NAME_OF_THE_STATE_BUCKET`, `THE_ID_OF_THE_DYNAMODB_TABLE` and `THE_ID_OF_THE_KMS_KEY` can be replaced by `state_bucket.bucket`, `dynamodb_table.id` and `kms_key.id` in outputs from this module respectively.
+`THE_NAME_OF_THE_STATE_BUCKET`, `THE_ID_OF_THE_DYNAMODB_TABLE` and `THE_ID_OF_THE_KMS_KEY` can be replaced by `state_bucket.bucket`, `dynamodb_table.id` and `kms_key.id` in outputs from this module respectively. `THE_CONFIG_PATH` is your preferred path on Amazon S3 that you can choose for your terraform project.
 
 See [the official document](https://www.terraform.io/docs/backends/types/s3.html#example-configuration) for more detail.
 
